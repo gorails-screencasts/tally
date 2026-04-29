@@ -1,12 +1,11 @@
 <% content_for :title, "Editing budget" %>
 
-<h1>Editing budget</h1>
+<%= link_to "Back to budget", @budget, class: "back-link" %>
 
-<%= render "form", budget: @budget %>
+<div class="page-header">
+  <h1>Editing budget</h1>
+</div>
 
-<br>
-
-<div>
-  <%= link_to "Show this budget", @budget %> |
-  <%= link_to "Back to budgets", budgets_path %>
+<div class="form-card">
+  <%= render "form", budget: @budget %>
 </div>

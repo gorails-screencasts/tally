@@ -24,6 +24,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="nav">
+      <%= link_to "Tally", budgets_path, class: "nav__brand" %>
+    </nav>
+
+    <main class="container">
+      <%= yield %>
+    </main>
   </body>
 </html>
