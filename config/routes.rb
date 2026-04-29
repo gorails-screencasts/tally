@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resource :session
+  resources :registrations
   resources :passwords, param: :token
   resources :budgets do
     resources :transactions, except: [ :index, :show ]
