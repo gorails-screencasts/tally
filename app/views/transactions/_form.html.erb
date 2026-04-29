@@ -1,4 +1,4 @@
-<%= form_with(model: [ budget, transaction ]) do |form| %>
+<%= form_with(model: [ budget, transaction ], id: dom_id(transaction), html: {popover: "auto"}) do |form| %>
   <% if transaction.errors.any? %>
     <div class="error-list">
       <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>

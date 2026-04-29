@@ -7,11 +7,17 @@
 <div class="page-header">
   <h1><%= @budget.formatted_month %> Budget</h1>
   <div class="page-header__actions">
-    <%= link_to "Edit", edit_budget_path(@budget), class: "btn btn-secondary" %>
+    <button commandfor="<%= dom_id(@budget) %>" command="toggle-popover" class="btn btn-secondary">
+      Edit
+    </button>
+    <%= render "form", budget: @budget %>
     <%= button_to "Delete", @budget, method: :delete,
           data: { turbo_confirm: "Are you sure?" },
           class: "btn btn-danger" %>
-    <%= link_to "Add transaction", new_budget_transaction_path(@budget), class: "btn btn-primary" %>
+    <button commandfor="new_transaction" command="toggle-popover" class="btn btn-primary">
+      New transaction
+    </button>
+    <%= render "transactions/form", budget: @budget, transaction: Transaction.new %>
   </div>
 </div>
 
@@ -54,11 +60,14 @@
           </td>
           <td>
             <div class="td-actions">
-              <%= link_to "Edit", edit_budget_transaction_path(@budget, transaction), class: "btn btn-secondary" %>
+              <button commandfor="<%= dom_id(transaction) %>" command="toggle-popover" class="btn btn-secondary">
+                Edit
+              </button>
+              <%= render "transactions/form", budget: @budget, transaction: transaction %>
               <%= button_to "Delete", budget_transaction_path(@budget, transaction),
-                    method: :delete,
-                    data: { turbo_confirm: "Are you sure?" },
-                    class: "btn btn-danger" %>
+                method: :delete,
+                data: { turbo_confirm: "Are you sure?" },
+                class: "btn btn-danger" %>
             </div>
           </td>
         </tr>

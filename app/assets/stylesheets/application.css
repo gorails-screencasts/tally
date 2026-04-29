@@ -261,7 +261,8 @@ ul { list-style: none; }
 .badge-expense { background: #fee2e2; color: #b91c1c; }
 
 /* ── Forms ──────────────────────────────────────────────────── */
-.form-card {
+.form-card,
+[popover]{
   max-width: 480px;
   padding: 32px;
   background: var(--color-surface);
@@ -338,3 +339,10 @@ ul { list-style: none; }
 }
 .back-link:hover { color: var(--color-accent); text-decoration: none; }
 .back-link::before { content: "←"; }
+
+[popover] {
+  inset: unset;
+  top: anchor(bottom);
+  right: anchor(right);
+  position-try-fallbacks: flip-block;
+}

@@ -1,4 +1,4 @@
-<%= form_with(model: budget) do |form| %>
+<%= form_with(model: budget, id: dom_id(budget), html: {popover: "auto"}) do |form| %>
   <% if budget.errors.any? %>
     <div class="error-list">
       <h2><%= pluralize(budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
