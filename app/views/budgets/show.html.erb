@@ -2,6 +2,21 @@
   <p class="notice"><%= notice %></p>
 <% end %>
 
+<% if alert.present? && alert.is_a?(Array) %>
+  <div class="error-list">
+    <h2><%= pluralize(alert.size, "error") %> prohibited this:</h2>
+    <ul>
+      <% alert.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% elsif alert.present? %>
+  <p class="alert">
+    <%= alert %>
+  </p>
+<% end %>
+
 <%= link_to "Back to budgets", budgets_path, class: "back-link" %>
 
 <div class="page-header">
@@ -12,8 +27,8 @@
     </button>
     <%= render "form", budget: @budget %>
     <%= button_to "Delete", @budget, method: :delete,
-          data: { turbo_confirm: "Are you sure?" },
-          class: "btn btn-danger" %>
+      data: { turbo_confirm: "Are you sure?" },
+      class: "btn btn-danger" %>
     <button commandfor="new_transaction" command="toggle-popover" class="btn btn-primary">
       New transaction
     </button>

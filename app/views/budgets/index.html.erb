@@ -7,7 +7,10 @@
 <div class="page-header">
   <h1>Budgets</h1>
   <div class="page-header__actions">
-    <%= link_to "New budget", new_budget_path, class: "btn btn-primary" %>
+    <button commandfor="<%= dom_id(@new_budget) %>" command="toggle-popover" class="btn btn-primary">
+      New budget
+    </button>
+    <%= render "form", budget: @new_budget %>
   </div>
 </div>
 
